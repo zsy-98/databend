@@ -36,9 +36,9 @@ use crate::SyncSystemTable;
 
 fn encode_operator_execution_info(info: &OperatorExecutionInfo) -> jsonb::Value {
     // Process time represent with number of milliseconds.
-    let process_time = info.process_time.as_nanos() as f64 / 1e6;
+    let cpu_time = info.cpu_time.as_nanos() as f64 / 1e6;
     (&serde_json::json!({
-        "process_time": process_time,
+        "cpu_time": process_time,
         "input_rows": info.input_rows,
         "input_bytes": info.input_bytes,
         "output_rows": info.output_rows,

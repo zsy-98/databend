@@ -2500,6 +2500,7 @@ dependencies = [
  "common-expression",
  "common-pipeline-core",
  "common-profile",
+ "cpu-time",
  "jsonb 0.2.3 (git+https://github.com/datafuselabs/jsonb?rev=b29f2ea)",
  "match-template",
 ]
@@ -3255,6 +3256,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b446fd40bcc17eddd6a4a78f24315eb90afdb3334999ddfd4909985c47722442"
 dependencies = [
  "cfg-if",
+]
+
+[[package]]
+name = "cpu-time"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ad9182963eedd274a445d6a43a50c4097537a238c8ad8980e400c3bfbc956426"
+dependencies = [
+ "libc",
+ "winapi",
 ]
 
 [[package]]

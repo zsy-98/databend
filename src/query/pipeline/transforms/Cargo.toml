@@ -20,5 +20,7 @@ match-template = "0.0.1"
 async-backtrace = { workspace = true }
 async-trait = { version = "0.1.57", package = "async-trait-fn" }
 
+cpu-time = "0.1"
+
 [package.metadata.cargo-machete]
 ignored = ["match-template"]

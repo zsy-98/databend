@@ -110,6 +110,7 @@ pub struct OperatorExecutionInfo {
     pub input_bytes: usize,
     pub output_rows: usize,
     pub output_bytes: usize,
+    pub cpu_time: Duration,
 }
 
 impl From<ProcessorProfile> for OperatorExecutionInfo {
@@ -121,11 +122,12 @@ impl From<ProcessorProfile> for OperatorExecutionInfo {
 impl From<&ProcessorProfile> for OperatorExecutionInfo {
     fn from(value: &ProcessorProfile) -> Self {
         OperatorExecutionInfo {
-            process_time: value.cpu_time,
+            process_time: value.process_time,
             input_rows: value.input_rows,
             input_bytes: value.input_bytes,
             output_rows: value.output_rows,
             output_bytes: value.output_bytes,
+            cpu_time: value.cpu_time,
         }
     }
 }

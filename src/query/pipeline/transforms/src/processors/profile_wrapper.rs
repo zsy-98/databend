@@ -14,6 +14,7 @@
 
 use std::sync::Arc;
 use std::time::Instant;
+use cpu_time::ThreadTime;
 
 use common_exception::Result;
 use common_expression::DataBlock;
@@ -82,7 +83,7 @@ where T: Processor + 'static
     }
 
     fn process(&mut self) -> Result<()> {
-        let instant = Instant::now();
+        let instant = ThreadTime::now();
         self.inner.process()?;
         let elapsed = instant.elapsed();
         self.prof = self.prof
@@ -146,17 +147,18 @@ where T: Transform + 'static
         let input_rows = data.num_rows();
         let input_bytes = data.memory_size();
 
-        let instant = Instant::now();
+        let instant = ThreadTime::now();
         let res = self.inner.transform(data)?;
         let elapsed = instant.elapsed();
         self.prof = self.prof
             + ProcessorProfile {
-                cpu_time: elapsed,
+                process_time: Default::default(),
                 wait_time: Default::default(),
                 input_rows,
                 input_bytes,
                 output_rows: res.num_rows(),
                 output_bytes: res.memory_size(),
+                cpu_time: elapsed,
             };
         Ok(res)
     }
