@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use cpu_time::ThreadTime;
 use std::time::Instant;
 
 use common_exception::Result;
@@ -71,7 +72,7 @@ where T: Processor + 'static
     }
 
     fn process(&mut self) -> Result<()> {
-        let instant = Instant::now();
+        let instant = ThreadTime::now();
         self.inner.process()?;
         let elapsed = instant.elapsed();
         self.prof = self.prof + ProcessorProfile { cpu_time: elapsed };

@@ -23,7 +23,7 @@ use dashmap::DashMap;
 use crate::prof::QueryProfile;
 
 /// Default capacity of the LRU cache of query profiles.
-const DEFAULT_QUERY_PROFILE_LIMIT: usize = 20;
+const DEFAULT_QUERY_PROFILE_LIMIT: usize = 100;
 
 /// Manager of query profiling.
 /// This is a singleton in every databend-query process.
