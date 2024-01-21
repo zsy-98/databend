@@ -188,7 +188,7 @@ function install_sccache {
 		esac
 		download_version="v0.5.3"
 		download_target="sccache-${download_version}-${arch}-unknown-linux-musl"
-		SCCACHE_RELEASE="https://github.com/mozilla/sccache/releases/"
+		SCCACHE_RELEASE="https://gitee.com/irascible-brother/sccache/releases"
 		curl -fLo sccache.tar.gz "${SCCACHE_RELEASE}/download/${download_version}/${download_target}.tar.gz"
 		tar -xzf sccache.tar.gz
 		"${PRE_COMMAND[@]}" cp "${download_target}/sccache" /usr/local/bin/
